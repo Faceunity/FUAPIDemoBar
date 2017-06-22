@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		CD61571A1E56B0F30083EF33 /* build */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CD61571D1E56B0F30083EF33 /* Build configuration list for PBXAggregateTarget "build" */;
+			buildPhases = (
+				CD61571E1E56B0F90083EF33 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = build;
+			productName = dasgasdg;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		CD6157241E56C1370083EF33 /* FUDemoBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6157231E56C1370083EF33 /* FUDemoBar.xib */; };
+		CD6157261E56C3AF0083EF33 /* filterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6157251E56C3AF0083EF33 /* filterCell.xib */; };
+		CD6157281E56C4020083EF33 /* FUItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6157271E56C4020083EF33 /* FUItemCell.xib */; };
+		CD6D53501E24703D00007792 /* FUAPIDemoBar.h in Headers */ = {isa = PBXBuildFile; fileRef = CD6D534E1E24703D00007792 /* FUAPIDemoBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD6D53511E24703D00007792 /* FUAPIDemoBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D534F1E24703D00007792 /* FUAPIDemoBar.m */; };
+		CDE787C31E20B45F00250AC1 /* FUDemoBar.h in Headers */ = {isa = PBXBuildFile; fileRef = CDE787C11E20B45F00250AC1 /* FUDemoBar.h */; };
+		CDE787D21E20B49E00250AC1 /* BeautySlider.h in Headers */ = {isa = PBXBuildFile; fileRef = CDE787C91E20B49E00250AC1 /* BeautySlider.h */; };
+		CDE787D31E20B49E00250AC1 /* BeautySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE787CA1E20B49E00250AC1 /* BeautySlider.m */; };
+		CDE787D41E20B49E00250AC1 /* blurCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE787CB1E20B49E00250AC1 /* blurCell.xib */; };
+		CDE787D51E20B49E00250AC1 /* FilterView.h in Headers */ = {isa = PBXBuildFile; fileRef = CDE787CC1E20B49E00250AC1 /* FilterView.h */; };
+		CDE787D61E20B49E00250AC1 /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE787CD1E20B49E00250AC1 /* FilterView.m */; };
+		CDE787D71E20B49E00250AC1 /* FUDemoBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE787CE1E20B49E00250AC1 /* FUDemoBar.m */; };
+		CDE787D81E20B49E00250AC1 /* ItemsView.h in Headers */ = {isa = PBXBuildFile; fileRef = CDE787CF1E20B49E00250AC1 /* ItemsView.h */; };
+		CDE787D91E20B49E00250AC1 /* ItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE787D01E20B49E00250AC1 /* ItemsView.m */; };
+		CDE787DA1E20B49E00250AC1 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDE787D11E20B49E00250AC1 /* Media.xcassets */; };
+		CDFFAECF1E55690C00BB53E6 /* UIImage+demobar.h in Headers */ = {isa = PBXBuildFile; fileRef = CDFFAECD1E55690C00BB53E6 /* UIImage+demobar.h */; };
+		CDFFAED01E55690C00BB53E6 /* UIImage+demobar.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFAECE1E55690C00BB53E6 /* UIImage+demobar.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CD6157231E56C1370083EF33 /* FUDemoBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUDemoBar.xib; sourceTree = "<group>"; };
+		CD6157251E56C3AF0083EF33 /* filterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = filterCell.xib; sourceTree = "<group>"; };
+		CD6157271E56C4020083EF33 /* FUItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FUItemCell.xib; sourceTree = "<group>"; };
+		CD6D534E1E24703D00007792 /* FUAPIDemoBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FUAPIDemoBar.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CD6D534F1E24703D00007792 /* FUAPIDemoBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FUAPIDemoBar.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CDE787BE1E20B45F00250AC1 /* FUAPIDemoBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FUAPIDemoBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDE787C11E20B45F00250AC1 /* FUDemoBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FUDemoBar.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CDE787C21E20B45F00250AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDE787C91E20B49E00250AC1 /* BeautySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautySlider.h; sourceTree = "<group>"; };
+		CDE787CA1E20B49E00250AC1 /* BeautySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautySlider.m; sourceTree = "<group>"; };
+		CDE787CB1E20B49E00250AC1 /* blurCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = blurCell.xib; sourceTree = "<group>"; };
+		CDE787CC1E20B49E00250AC1 /* FilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterView.h; sourceTree = "<group>"; };
+		CDE787CD1E20B49E00250AC1 /* FilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterView.m; sourceTree = "<group>"; };
+		CDE787CE1E20B49E00250AC1 /* FUDemoBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FUDemoBar.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CDE787CF1E20B49E00250AC1 /* ItemsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsView.h; sourceTree = "<group>"; };
+		CDE787D01E20B49E00250AC1 /* ItemsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsView.m; sourceTree = "<group>"; };
+		CDE787D11E20B49E00250AC1 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		CDFFAECD1E55690C00BB53E6 /* UIImage+demobar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+demobar.h"; sourceTree = "<group>"; };
+		CDFFAECE1E55690C00BB53E6 /* UIImage+demobar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+demobar.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CDE787BA1E20B45F00250AC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CDE787B41E20B45F00250AC1 = {
+			isa = PBXGroup;
+			children = (
+				CDE787C01E20B45F00250AC1 /* FUAPIDemoBar */,
+				CDE787BF1E20B45F00250AC1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CDE787BF1E20B45F00250AC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CDE787BE1E20B45F00250AC1 /* FUAPIDemoBar.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CDE787C01E20B45F00250AC1 /* FUAPIDemoBar */ = {
+			isa = PBXGroup;
+			children = (
+				CD6D534E1E24703D00007792 /* FUAPIDemoBar.h */,
+				CD6D534F1E24703D00007792 /* FUAPIDemoBar.m */,
+				CDE787C11E20B45F00250AC1 /* FUDemoBar.h */,
+				CDE787CE1E20B49E00250AC1 /* FUDemoBar.m */,
+				CD6157231E56C1370083EF33 /* FUDemoBar.xib */,
+				CDE787C91E20B49E00250AC1 /* BeautySlider.h */,
+				CDE787CA1E20B49E00250AC1 /* BeautySlider.m */,
+				CDE787CB1E20B49E00250AC1 /* blurCell.xib */,
+				CD6157251E56C3AF0083EF33 /* filterCell.xib */,
+				CD6157271E56C4020083EF33 /* FUItemCell.xib */,
+				CDE787CC1E20B49E00250AC1 /* FilterView.h */,
+				CDE787CD1E20B49E00250AC1 /* FilterView.m */,
+				CDE787CF1E20B49E00250AC1 /* ItemsView.h */,
+				CDE787D01E20B49E00250AC1 /* ItemsView.m */,
+				CDE787D11E20B49E00250AC1 /* Media.xcassets */,
+				CDE787C21E20B45F00250AC1 /* Info.plist */,
+				CDFFAECD1E55690C00BB53E6 /* UIImage+demobar.h */,
+				CDFFAECE1E55690C00BB53E6 /* UIImage+demobar.m */,
+			);
+			path = FUAPIDemoBar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CDE787BB1E20B45F00250AC1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDE787D51E20B49E00250AC1 /* FilterView.h in Headers */,
+				CD6D53501E24703D00007792 /* FUAPIDemoBar.h in Headers */,
+				CDE787C31E20B45F00250AC1 /* FUDemoBar.h in Headers */,
+				CDFFAECF1E55690C00BB53E6 /* UIImage+demobar.h in Headers */,
+				CDE787D81E20B49E00250AC1 /* ItemsView.h in Headers */,
+				CDE787D21E20B49E00250AC1 /* BeautySlider.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CDE787BD1E20B45F00250AC1 /* FUAPIDemoBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDE787C61E20B45F00250AC1 /* Build configuration list for PBXNativeTarget "FUAPIDemoBar" */;
+			buildPhases = (
+				CDE787B91E20B45F00250AC1 /* Sources */,
+				CDE787BA1E20B45F00250AC1 /* Frameworks */,
+				CDE787BB1E20B45F00250AC1 /* Headers */,
+				CDE787BC1E20B45F00250AC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FUAPIDemoBar;
+			productName = FUAPIDemoBar;
+			productReference = CDE787BE1E20B45F00250AC1 /* FUAPIDemoBar.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CDE787B51E20B45F00250AC1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "刘洋";
+				TargetAttributes = {
+					CD61571A1E56B0F30083EF33 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 35A6KD62ZJ;
+						ProvisioningStyle = Automatic;
+					};
+					CDE787BD1E20B45F00250AC1 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = CDE787B81E20B45F00250AC1 /* Build configuration list for PBXProject "FUAPIDemoBar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CDE787B41E20B45F00250AC1;
+			productRefGroup = CDE787BF1E20B45F00250AC1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CDE787BD1E20B45F00250AC1 /* FUAPIDemoBar */,
+				CD61571A1E56B0F30083EF33 /* build */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CDE787BC1E20B45F00250AC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDE787DA1E20B49E00250AC1 /* Media.xcassets in Resources */,
+				CDE787D41E20B49E00250AC1 /* blurCell.xib in Resources */,
+				CD6157281E56C4020083EF33 /* FUItemCell.xib in Resources */,
+				CD6157241E56C1370083EF33 /* FUDemoBar.xib in Resources */,
+				CD6157261E56C3AF0083EF33 /* filterCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CD61571E1E56B0F90083EF33 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Sets the target folders and the final framework product.\n# 如果工程名称和Framework的Target名称不一样的话，要自定义FMKNAME\n# 例如: FMK_NAME = \"MyFramework\"\nFMK_NAME=${PROJECT_NAME}\n\n# Install dir will be the final output to the framework.\n# The following line create it in the root folder of the current project.\nINSTALL_DIR=${SRCROOT}/Products/${FMK_NAME}.framework\n\n# Working dir will be deleted after the framework creation.\nWRK_DIR=build\nDEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.framework\n#SIMULATOR_DIR=${WRK_DIR}/Release-iphonesimulator/${FMK_NAME}.framework\n\n# -configuration ${CONFIGURATION}\n# Clean and Building both architectures.\nxcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphoneos -arch armv7 -arch armv7s -arch arm64 clean build\n#xcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphonesimulator -arch x86_64 -arch i386 clean build\n\n# Cleaning the oldest.\nif [ -d \"${INSTALL_DIR}\" ]\nthen\nrm -rf \"${INSTALL_DIR}\"\nfi\n\nmkdir -p \"${INSTALL_DIR}\"\n\ncp -R \"${DEVICE_DIR}/\" \"${INSTALL_DIR}/\"\n\n# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\n#lipo -create \"${DEVICE_DIR}/${FMK_NAME}\" \"${SIMULATOR_DIR}/${FMK_NAME}\" -output \"${INSTALL_DIR}/${FMK_NAME}\"\nlipo -create \"${DEVICE_DIR}/${FMK_NAME}\" -output \"${INSTALL_DIR}/${FMK_NAME}\"\n\n#cp -R \"${SIMULATOR_DIR}/Modules/ContactsFramework.swiftmodule/\" \"${INSTALL_DIR}/Modules/ContactsFramework.swiftmodule/\"\n\nrm -r \"${WRK_DIR}\"\n\nopen \"${SRCROOT}/Products/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CDE787B91E20B45F00250AC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDFFAED01E55690C00BB53E6 /* UIImage+demobar.m in Sources */,
+				CDE787D71E20B49E00250AC1 /* FUDemoBar.m in Sources */,
+				CD6D53511E24703D00007792 /* FUAPIDemoBar.m in Sources */,
+				CDE787D61E20B49E00250AC1 /* FilterView.m in Sources */,
+				CDE787D31E20B49E00250AC1 /* BeautySlider.m in Sources */,
+				CDE787D91E20B49E00250AC1 /* ItemsView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CD61571B1E56B0F30083EF33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 35A6KD62ZJ;
+				OTHER_CFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CD61571C1E56B0F30083EF33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 35A6KD62ZJ;
+				OTHER_CFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CDE787C41E20B45F00250AC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CDE787C51E20B45F00250AC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CDE787C71E20B45F00250AC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = FUAPIDemoBar/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-fembed-bitcode";
+				PRODUCT_BUNDLE_IDENTIFIER = com.faceunity.FUAPIDemoBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CDE787C81E20B45F00250AC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = FUAPIDemoBar/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-fembed-bitcode";
+				PRODUCT_BUNDLE_IDENTIFIER = com.faceunity.FUAPIDemoBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD61571D1E56B0F30083EF33 /* Build configuration list for PBXAggregateTarget "build" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD61571B1E56B0F30083EF33 /* Debug */,
+				CD61571C1E56B0F30083EF33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDE787B81E20B45F00250AC1 /* Build configuration list for PBXProject "FUAPIDemoBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDE787C41E20B45F00250AC1 /* Debug */,
+				CDE787C51E20B45F00250AC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDE787C61E20B45F00250AC1 /* Build configuration list for PBXNativeTarget "FUAPIDemoBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDE787C71E20B45F00250AC1 /* Debug */,
+				CDE787C81E20B45F00250AC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CDE787B51E20B45F00250AC1 /* Project object */;
+}
