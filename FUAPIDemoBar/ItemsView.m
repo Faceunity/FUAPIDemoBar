@@ -9,6 +9,7 @@
 #import "UIImage+demobar.h"
 
 @interface FUItemCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 
@@ -64,6 +65,8 @@
     FUItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"itemCell" forIndexPath:indexPath];
     
     cell.imageView.image = [UIImage imageWithName:_itemsDataSource[indexPath.row]];
+    
+    cell.nameLabel.text = cell.imageView.image ? @"":_itemsDataSource[indexPath.row];
     
     cell.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
 
