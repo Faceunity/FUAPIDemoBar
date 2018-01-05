@@ -28,6 +28,12 @@
     [self registerNib:[UINib nibWithNibName:@"filterCell" bundle:[NSBundle bundleForClass:[self class]]] forCellWithReuseIdentifier:@"filterCell"];
 }
 
+- (void)setSelectedFilter:(NSInteger)selectedFilter{
+    _selectedFilter = selectedFilter;
+    
+    [self reloadData];
+}
+
 - (void)setFiltersDataSource:(NSArray<NSString *> *)filtersDataSource
 {
     _filtersDataSource = filtersDataSource;
@@ -64,15 +70,16 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == _selectedFilter) {
+    if (indexPath.row == _selectedFilter ) {
         return;
     }
-    NSIndexPath *preIndex = [NSIndexPath indexPathForRow:_selectedFilter inSection:0];
-    _selectedFilter = indexPath.row;
-    [collectionView reloadItemsAtIndexPaths:@[indexPath,preIndex]];
     
-    if ([self.mdelegate respondsToSelector:@selector(didSelectedFilter:)]) {
-        [self.mdelegate didSelectedFilter:_filtersDataSource[indexPath.row]];
+    _selectedFilter = indexPath.row;
+    
+    [collectionView reloadData];
+    
+    if ([self.mdelegate respondsToSelector:@selector(filterView:didSelectedFilter:)]) {
+        [self.mdelegate filterView:self didSelectedFilter:_filtersDataSource[indexPath.row]];
     }
 }
 

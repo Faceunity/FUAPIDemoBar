@@ -7,9 +7,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class FilterView;
+
 @protocol FilterViewDelegate <NSObject>
 
-- (void)didSelectedFilter:(NSString *)filter;
+- (void)filterView:(FilterView *)filterView didSelectedFilter:(NSString *)filter;
 
 @end
 

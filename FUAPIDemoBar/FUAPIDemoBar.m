@@ -19,10 +19,12 @@
 @implementation FUAPIDemoBar
 @synthesize itemsDataSource = _itemsDataSource;
 @synthesize filtersDataSource = _filtersDataSource;
+@synthesize beautyFiltersDataSource = _beautyFiltersDataSource;
 @synthesize selectedItem = _selectedItem;
 @synthesize selectedFilter = _selectedFilter;
 @synthesize selectedBlur = _selectedBlur;
-@synthesize beautyLevel = _beautyLevel;
+@synthesize skinDetectEnable = _skinDetectEnable;
+@synthesize whiteLevel = _whiteLevel;
 @synthesize thinningLevel = _thinningLevel;
 @synthesize enlargingLevel = _enlargingLevel;
 @synthesize faceShape = _faceShape;
@@ -40,10 +42,12 @@
     bar.delegate = self;
     bar.itemsDataSource = _itemsDataSource;
     bar.filtersDataSource = _filtersDataSource;
+    bar.beautyFiltersDataSource = _beautyFiltersDataSource;
     bar.selectedItem = _selectedItem;
     bar.selectedFilter = _selectedFilter;
     bar.selectedBlur = _selectedBlur;
-    bar.beautyLevel = _beautyLevel;
+    bar.skinDetectEnable = _skinDetectEnable;
+    bar.whiteLevel = _whiteLevel;
     bar.thinningLevel = _thinningLevel;
     bar.enlargingLevel = _enlargingLevel;
     bar.redLevel = _redLevel;
@@ -63,10 +67,12 @@
         bar.delegate = self;
         bar.itemsDataSource = _itemsDataSource;
         bar.filtersDataSource = _filtersDataSource;
+        bar.beautyFiltersDataSource = _beautyFiltersDataSource;
         bar.selectedItem = _selectedItem;
         bar.selectedFilter = _selectedFilter;
         bar.selectedBlur = _selectedBlur;
-        bar.beautyLevel = _beautyLevel;
+        bar.skinDetectEnable = _skinDetectEnable;
+        bar.whiteLevel = _whiteLevel;
         bar.thinningLevel = _thinningLevel;
         bar.enlargingLevel = _enlargingLevel;
         bar.redLevel = _redLevel;
@@ -85,15 +91,15 @@
     bar.frame = self.bounds;
 }
 
-- (double)beautyLevel
+- (double)whiteLevel
 {
-    return bar.beautyLevel;
+    return bar.whiteLevel;
 }
 
-- (void)setBeautyLevel:(double)beautyLevel
+- (void)setWhiteLevel:(double)whiteLevel
 {
-    _beautyLevel = beautyLevel;
-    bar.beautyLevel = beautyLevel;
+    _whiteLevel = whiteLevel;
+    bar.whiteLevel = whiteLevel;
 }
 
 - (NSInteger)selectedBlur
@@ -105,6 +111,16 @@
 {
     _selectedBlur = selectedBlur;
     bar.selectedBlur = selectedBlur;
+}
+
+- (BOOL)skinDetectEnable{
+    
+    return bar.skinDetectEnable;
+}
+
+- (void)setSkinDetectEnable:(BOOL)skinDetectEnable{
+    _skinDetectEnable = skinDetectEnable;
+    bar.skinDetectEnable = skinDetectEnable;
 }
 
 - (NSString *)selectedItem
@@ -217,6 +233,19 @@
 {
     _filtersDataSource = filtersDataSource;
     bar.filtersDataSource = filtersDataSource;
+}
+
+- (NSArray<NSString *> *)beautyFiltersDataSource{
+    if (!bar.beautyFiltersDataSource) {
+        return _beautyFiltersDataSource;
+    }
+    
+    return bar.beautyFiltersDataSource;
+}
+
+- (void)setBeautyFiltersDataSource:(NSArray<NSString *> *)beautyFiltersDataSource{
+    _beautyFiltersDataSource = beautyFiltersDataSource;
+    bar.beautyFiltersDataSource = beautyFiltersDataSource;
 }
 
 #pragma -FUDemoBarDelegate

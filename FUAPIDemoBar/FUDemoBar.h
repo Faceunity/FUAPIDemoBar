@@ -28,7 +28,9 @@
 
 @property (nonatomic, assign) NSInteger selectedBlur;
 
-@property (nonatomic, assign) double beautyLevel;
+@property (nonatomic, assign) BOOL skinDetectEnable;
+
+@property (nonatomic, assign) double whiteLevel;
 
 @property (nonatomic, assign) double thinningLevel;
 
@@ -47,5 +49,7 @@
 @property (nonatomic, strong) NSArray<NSString *> *itemsDataSource;
 
 @property (nonatomic, strong) NSArray<NSString *> *filtersDataSource;
+
+@property (nonatomic, strong) NSArray<NSString *> *beautyFiltersDataSource;
 
 @end

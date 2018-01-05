@@ -11,14 +11,6 @@
 #import "BeautySlider.h"
 #import "UIImage+demobar.h"
 
-@interface mCollectionViewLayout : UICollectionViewFlowLayout
-
-@end
-
-@implementation mCollectionViewLayout
-
-@end
-
 @interface blurCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -37,18 +29,20 @@
     NSInteger currentType;
     
 }
-@property (weak, nonatomic) IBOutlet UIButton *redBtn;
 @property (weak, nonatomic) IBOutlet UIButton *beautyBtn;
 @property (weak, nonatomic) IBOutlet UIButton *itemsBtn;
 @property (weak, nonatomic) IBOutlet UIButton *filterBtn;
-@property (weak, nonatomic) IBOutlet UIButton *blurBtn;
-@property (weak, nonatomic) IBOutlet UIButton *colorBtn;
-@property (weak, nonatomic) IBOutlet UIView *sliderBg;
+@property (weak, nonatomic) IBOutlet UIButton *beautyFilterBtn;
+@property (weak, nonatomic) IBOutlet UIButton *skinBeautyBtn;
 @property (weak, nonatomic) IBOutlet ItemsView *itemsView;
 @property (weak, nonatomic) IBOutlet FilterView *filterView;
-@property (weak, nonatomic) IBOutlet BeautySlider *beautySlider;
-@property (nonatomic, strong) UICollectionView *blurView;
+@property (weak, nonatomic) IBOutlet FilterView *beautyFilterView;
+@property (weak, nonatomic) IBOutlet BeautySlider *redSlider;
+@property (weak, nonatomic) IBOutlet BeautySlider *whiteSlider;
+@property (weak, nonatomic) IBOutlet UICollectionView *blurView;
 @property (weak, nonatomic) IBOutlet UIView *beautyView;
+@property (weak, nonatomic) IBOutlet UIView *skinBeautyView;
+@property (weak, nonatomic) IBOutlet UISwitch *skinDetectSwitch;
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 
 @property (weak, nonatomic) IBOutlet UIButton *nvshenBtn;
@@ -82,20 +76,9 @@
     [super awakeFromNib];
     
     self.filterView.mdelegate = self;
+    self.beautyFilterView.mdelegate = self;
     self.itemsView.mdelegate = self;
-    
-    mCollectionViewLayout *layout = [[mCollectionViewLayout alloc] init];
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.itemSize = CGSizeMake(46, 46);
-    layout.minimumLineSpacing = 5;
-    
-    _blurView = [[UICollectionView alloc] initWithFrame:_filterView.frame collectionViewLayout:layout];
-    _blurView.delegate = self;
-    _blurView.dataSource = self;
-    _blurView.backgroundColor = [UIColor clearColor];
-    _blurView.hidden = YES;
-    [self addSubview:_blurView];
-    
+        
     NSBundle *frameWorkBundle = [NSBundle bundleForClass:self.class];
     [_blurView registerNib:[UINib nibWithNibName:@"blurCell" bundle:frameWorkBundle] forCellWithReuseIdentifier:@"blurCell"];
     
@@ -107,20 +90,11 @@
     [self bottomBtnClick:self.itemsBtn];
 }
 
-- (void)layoutSubviews
+- (void)setWhiteLevel:(double)whiteLevel
 {
-    [super layoutSubviews];
+    _whiteLevel = whiteLevel;
     
-    _blurView.frame = _filterView.frame;
-    
-    [_blurView reloadData];
-}
-
-- (void)setBeautyLevel:(double)beautyLevel
-{
-    _beautyLevel = beautyLevel;
-    
-    self.beautySlider.value = beautyLevel;
+    self.whiteSlider.value = whiteLevel;
 
 }
 
@@ -182,15 +156,40 @@
 {
     _selectedFilter = selectedFilter;
     
-    self.filterView.selectedFilter = [self.filterView.filtersDataSource indexOfObject:_selectedFilter];
+    if ([self.filterView.filtersDataSource containsObject:_selectedFilter]) {
+        self.filterView.selectedFilter = [self.filterView.filtersDataSource indexOfObject:_selectedFilter];
+    }else{
+        self.filterView.selectedFilter = -1;
+    }
+    
+    if ([self.beautyFilterView.filtersDataSource containsObject:_selectedFilter]) {
+        self.beautyFilterView.selectedFilter = [self.beautyFilterView.filtersDataSource indexOfObject:_selectedFilter];
+        self.filterView.selectedFilter = -1;
+    }else{
+        self.beautyFilterView.selectedFilter = -1;
+    }
 }
 
 -(void)setFiltersDataSource:(NSArray<NSString *> *)filtersDataSource
 {
     _filtersDataSource = filtersDataSource;
     
-    self.filterView.selectedFilter = [filtersDataSource indexOfObject:_selectedFilter];
     self.filterView.filtersDataSource = filtersDataSource.count > 0 ? self.filtersDataSource:@[@"nature", @"delta", @"electric", @"slowlived", @"tokyo", @"warm"];
+    if ([self.filterView.filtersDataSource containsObject:_selectedFilter]) {
+        self.filterView.selectedFilter = [self.filterView.filtersDataSource indexOfObject:_selectedFilter];
+    }else{
+        self.filterView.selectedFilter = -1;
+    }
+}
+
+- (void)setBeautyFiltersDataSource:(NSArray<NSString *> *)beautyFiltersDataSource{
+    _beautyFiltersDataSource = beautyFiltersDataSource;
+    self.beautyFilterView.filtersDataSource = beautyFiltersDataSource.count >0 ? beautyFiltersDataSource:@[@"origin", @"qingxin", @"shaonv", @"ziran", @"hongrun"];
+    if ([self.beautyFilterView.filtersDataSource containsObject:_selectedFilter]) {
+        self.beautyFilterView.selectedFilter = [self.beautyFilterView.filtersDataSource indexOfObject:_selectedFilter];
+    }else{
+        self.beautyFilterView.selectedFilter = -1;
+    }
 }
 
 -(void)makeTransformCompleted:(void(^)(void))completed
@@ -235,6 +234,21 @@
     }
 }
 
+- (void)setSkinDetectEnable:(BOOL)skinDetectEnable{
+    _skinDetectEnable = skinDetectEnable;
+    
+    [self.skinDetectSwitch setOn:skinDetectEnable animated:YES];
+}
+
+- (IBAction)skinDetectSwitchValueChanged:(UISwitch *)sender {
+    _skinDetectEnable = sender.isOn;
+    
+    if ([self.delegate respondsToSelector:@selector(demoBarBeautyParamChanged)]) {
+        [self.delegate demoBarBeautyParamChanged];
+    }
+}
+
+
 - (IBAction)beautyBtnClick:(UIButton *)sender {
     
     if (sender.selected) {
@@ -266,21 +280,10 @@
         return;
     }
     [self updateContentWithSelectedBtn:sender];
-    
-    [self switchSliderModelWithSender:sender];
 }
 
 
 - (IBAction)beautyLevelChanged:(UISlider *)sender {
-    
-    
-    if (_colorBtn.selected) {
-        _beautyLevel = sender.value;
-        
-    }else if (_redBtn.selected)
-    {
-        self.redLevel = sender.value;
-    }
     
     if (sender == _gradeSlider) {
         self.faceShapeLevel = sender.value;
@@ -290,6 +293,12 @@
     }else if (sender == _shoulianSlider)
     {
         self.thinningLevel = sender.value;
+    }else if (sender == _whiteSlider)
+    {
+        self.whiteLevel = sender.value;
+    }else if (sender == _redSlider)
+    {
+        self.redLevel = sender.value;
     }
     
     if ([self.delegate respondsToSelector:@selector(demoBarBeautyParamChanged)]) {
@@ -301,37 +310,39 @@
 {
     _itemsBtn.selected = btn == _itemsBtn;
     _filterBtn.selected = btn == _filterBtn;
-    _blurBtn.selected = btn == _blurBtn;
-    _colorBtn.selected = btn == _colorBtn;
-    _redBtn.selected = btn == _redBtn;
+    _beautyFilterBtn.selected = btn == _beautyFilterBtn;
+    _skinBeautyBtn.selected = btn == _skinBeautyBtn;
     _beautyBtn.selected = btn == _beautyBtn;
     
     self.itemsView.hidden = !self.itemsBtn.selected;
     self.filterView.hidden = !self.filterBtn.selected;
-    self.blurView.hidden = !self.blurBtn.selected;
-    self.sliderBg.hidden = !(self.colorBtn.selected || self.redBtn.selected);
+    self.beautyFilterView.hidden = !self.beautyFilterBtn.selected;
+    self.skinBeautyView.hidden = !self.skinBeautyBtn.selected;
     self.beautyView.hidden = !self.beautyBtn.selected;
-    self.bgView.hidden = !self.beautyView.hidden;
+    self.bgView.hidden = !(self.beautyView.hidden&&self.skinBeautyView.hidden);
     
     self.filterBtn.titleLabel.font = [UIFont systemFontOfSize:self.filterBtn.selected ? 18:17];
-    self.blurBtn.titleLabel.font = [UIFont systemFontOfSize:self.blurBtn.selected ? 18:17];
-    self.colorBtn.titleLabel.font = [UIFont systemFontOfSize:self.colorBtn.selected ? 18:17];
+    self.beautyFilterBtn.titleLabel.font = [UIFont systemFontOfSize:self.beautyFilterBtn.selected ? 18:17];
+    self.skinBeautyBtn.titleLabel.font = [UIFont systemFontOfSize:self.skinBeautyBtn.selected ? 18:17];
     self.itemsBtn.titleLabel.font = [UIFont systemFontOfSize:self.itemsBtn.selected ? 18:17];
-    self.redBtn.titleLabel.font = [UIFont systemFontOfSize:self.redBtn.selected ? 18:17];
     self.beautyBtn.titleLabel.font = [UIFont systemFontOfSize:self.beautyBtn.selected ? 18:17];
     
+    self.backgroundColor = (self.beautyView.hidden&&self.skinBeautyView.hidden) ? [UIColor clearColor] : [UIColor colorWithWhite:0 alpha:0.5];
+//    self.backgroundColor = [UIColor redColor];
     
-    self.backgroundColor = !_beautyBtn.selected ? [UIColor clearColor] : [UIColor colorWithWhite:0 alpha:0.5];
-}
-
-- (void)switchSliderModelWithSender:(UIButton *)sender
-{
-    if (sender == _colorBtn) {
-        _beautySlider.value = self.beautyLevel;
-    }else if (sender == _redBtn)
-    {
-        _beautySlider.value = self.redLevel;
-    }
+    
+//    CGRect frame = self.frame;
+//    CGFloat maxY = CGRectGetMaxY(self.frame);
+//    
+//    if (!self.skinBeautyView.hidden) {
+//        frame.size.height = 215;
+//    }else if (!self.beautyView.hidden){
+//        frame.size.height = 208;
+//    }else{
+//        frame.size.height = 128;
+//    }
+//    frame.origin.y = maxY-frame.size.height;
+//    self.frame = frame;
 }
 
 - (void)selectNextFilter{
@@ -342,9 +353,18 @@
     [self.filterView selectPreFilter];
 }
 
-- (void)didSelectedFilter:(NSString *)filter
+- (void)filterView:(FilterView *)filterView didSelectedFilter:(NSString *)filter
 {
     _selectedFilter = filter;
+    
+    if (_filterView != filterView) {
+        _filterView.selectedFilter = -1;
+    }
+    
+    if (_beautyFilterView != filterView) {
+        _beautyFilterView.selectedFilter = -1;
+    }
+    
     if ([self.delegate respondsToSelector:@selector(demoBarDidSelectedFilter:)]) {
         [self.delegate demoBarDidSelectedFilter:filter];
     }
@@ -389,7 +409,7 @@
     }
     
     cell.backgroundColor = [UIColor colorWithWhite:1 alpha:0.3];
-    cell.layer.cornerRadius = 23;
+    cell.layer.cornerRadius = cell.frame.size.width * 0.5;
     cell.layer.masksToBounds = YES;
     cell.label.font = [UIFont systemFontOfSize:24];
  
@@ -423,15 +443,15 @@
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     
-    if ([collectionViewLayout isKindOfClass:[mCollectionViewLayout class]]) {
-        mCollectionViewLayout *layout = (mCollectionViewLayout *)collectionViewLayout;
+    if ([collectionViewLayout isKindOfClass:[UICollectionViewFlowLayout class]]) {
+        UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)collectionViewLayout;
         
         NSInteger itemCount = [collectionView numberOfItemsInSection:section];
         CGFloat itemWidth = layout.itemSize.width;
         CGFloat minSpace = layout.minimumLineSpacing;
-        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        CGFloat collectionViewWidth = collectionView.bounds.size.width;
         
-        CGFloat sideSpace = (screenWidth - (itemCount - 1) * minSpace - itemCount * itemWidth) * 0.5;
+        CGFloat sideSpace = (collectionViewWidth - (itemCount - 1) * minSpace - itemCount * itemWidth) * 0.5;
         
         sideSpace = sideSpace < 10 ? 10:sideSpace;
         
