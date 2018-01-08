@@ -53,6 +53,7 @@
     bar.redLevel = _redLevel;
     bar.faceShapeLevel = _faceShapeLevel;
     bar.faceShape = _faceShape;
+    bar.filtersCHName = _filtersCHName;
     [self addSubview:bar];
 }
 
@@ -78,6 +79,7 @@
         bar.redLevel = _redLevel;
         bar.faceShapeLevel = _faceShapeLevel;
         bar.faceShape = _faceShape;
+        bar.filtersCHName = _filtersCHName;
         [self addSubview:bar];
     }
     
@@ -246,6 +248,16 @@
 - (void)setBeautyFiltersDataSource:(NSArray<NSString *> *)beautyFiltersDataSource{
     _beautyFiltersDataSource = beautyFiltersDataSource;
     bar.beautyFiltersDataSource = beautyFiltersDataSource;
+}
+
+- (void)setFiltersCHName:(NSDictionary<NSString *,NSString *> *)filtersCHName{
+    _filtersCHName = filtersCHName;
+    
+    bar.filtersCHName = filtersCHName;
+}
+
+- (double)selectedFilterLevel{
+    return bar.selectedFilterLevel;
 }
 
 #pragma -FUDemoBarDelegate

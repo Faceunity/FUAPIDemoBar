@@ -34,8 +34,6 @@
 {
     [super awakeFromNib];
     
-    self.backgroundColor = [UIColor clearColor];
-    
     self.delegate = self;
     
     self.dataSource = self;

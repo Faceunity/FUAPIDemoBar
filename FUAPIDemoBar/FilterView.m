@@ -41,6 +41,12 @@
     [self reloadData];
 }
 
+- (void)setFiltersCHName:(NSDictionary<NSString *,NSString *> *)filtersCHName{
+    _filtersCHName = filtersCHName;
+    
+    [self reloadData];
+}
+
 -(NSInteger)numberOfSections{
     return 1;
 }
@@ -55,7 +61,8 @@
     filterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"filterCell" forIndexPath:indexPath];
     
     cell.imageView.image = [UIImage imageWithName:_filtersDataSource[indexPath.row]];
-    cell.filterNameLabel.text = _filtersDataSource[indexPath.row];
+    NSString *filter = _filtersDataSource[indexPath.row];
+    cell.filterNameLabel.text = _filtersCHName[filter] ? _filtersCHName[filter]:filter;
     
     cell.imageView.layer.borderColor = [UIColor clearColor].CGColor;
     cell.imageView.layer.borderWidth = 0.0;

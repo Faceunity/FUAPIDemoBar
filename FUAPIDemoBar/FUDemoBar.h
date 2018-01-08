@@ -52,4 +52,8 @@
 
 @property (nonatomic, strong) NSArray<NSString *> *beautyFiltersDataSource;
 
+@property (nonatomic, assign) double selectedFilterLevel;
+
+@property (nonatomic, strong) NSDictionary<NSString *,NSString *> *filtersCHName;
+
 @end

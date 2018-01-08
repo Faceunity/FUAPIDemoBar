@@ -29,6 +29,8 @@
     NSInteger currentType;
     
 }
+@property (copy, nonatomic) NSMutableDictionary<NSString *,NSNumber *> *filtersLevel;
+
 @property (weak, nonatomic) IBOutlet UIButton *beautyBtn;
 @property (weak, nonatomic) IBOutlet UIButton *itemsBtn;
 @property (weak, nonatomic) IBOutlet UIButton *filterBtn;
@@ -43,7 +45,8 @@
 @property (weak, nonatomic) IBOutlet UIView *beautyView;
 @property (weak, nonatomic) IBOutlet UIView *skinBeautyView;
 @property (weak, nonatomic) IBOutlet UISwitch *skinDetectSwitch;
-@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UIView *filterSliderView;
+@property (weak, nonatomic) IBOutlet BeautySlider *filterSlider;
 
 @property (weak, nonatomic) IBOutlet UIButton *nvshenBtn;
 @property (weak, nonatomic) IBOutlet UIButton *wanghongBtn;
@@ -53,6 +56,7 @@
 @property (weak, nonatomic) IBOutlet BeautySlider *gradeSlider;
 @property (weak, nonatomic) IBOutlet BeautySlider *dayanSlider;
 @property (weak, nonatomic) IBOutlet BeautySlider *shoulianSlider;
+
 
 @end
 
@@ -168,6 +172,13 @@
     }else{
         self.beautyFilterView.selectedFilter = -1;
     }
+    
+    NSArray *keys = self.filtersLevel.allKeys;
+    if (![keys containsObject:_selectedFilter]) {
+        self.filtersLevel[_selectedFilter] = @(1.0);
+    }
+    
+    self.filterSlider.value = self.filtersLevel[_selectedFilter].doubleValue;
 }
 
 -(void)setFiltersDataSource:(NSArray<NSString *> *)filtersDataSource
@@ -180,6 +191,12 @@
     }else{
         self.filterView.selectedFilter = -1;
     }
+    
+    if (filtersDataSource.count > 0) {
+        for (NSString *filter in filtersDataSource) {
+            self.filtersLevel[filter] = @(1.0);
+        }
+    }
 }
 
 - (void)setBeautyFiltersDataSource:(NSArray<NSString *> *)beautyFiltersDataSource{
@@ -190,6 +207,27 @@
     }else{
         self.beautyFilterView.selectedFilter = -1;
     }
+    
+    if (beautyFiltersDataSource.count > 0) {
+        for (NSString *filter in beautyFiltersDataSource) {
+            self.filtersLevel[filter] = @(1.0);
+        }
+    }
+}
+
+- (void)setFiltersCHName:(NSDictionary<NSString *,NSString *> *)filtersCHName{
+    
+    _filtersCHName = filtersCHName;
+    _filterView.filtersCHName = filtersCHName;
+    _beautyFilterView.filtersCHName = filtersCHName;
+}
+
+- (NSMutableDictionary<NSString *,NSNumber *> *)filtersLevel{
+    if (!_filtersLevel) {
+        _filtersLevel = [[NSMutableDictionary alloc] init];
+    }
+    
+    return _filtersLevel;
 }
 
 -(void)makeTransformCompleted:(void(^)(void))completed
@@ -306,6 +344,30 @@
     }
 }
 
+- (double)selectedFilterLevel{
+    
+    if (!_selectedFilter) {
+        return 1.0;
+    }
+    
+    NSArray *keys = self.filtersLevel.allKeys;
+    if (![keys containsObject:_selectedFilter]) {
+        self.filtersLevel[_selectedFilter] = @(1.0);
+    }
+    
+    return self.filtersLevel[_selectedFilter].doubleValue;
+}
+
+- (IBAction)filterLevelChanged:(UISlider *)sender {
+    if (_selectedFilter) {
+        self.filtersLevel[_selectedFilter] = @(sender.value);
+        
+        if ([self.delegate respondsToSelector:@selector(demoBarBeautyParamChanged)]) {
+            [self.delegate demoBarBeautyParamChanged];
+        }
+    }
+}
+
 - (void)updateContentWithSelectedBtn:(UIButton *)btn
 {
     _itemsBtn.selected = btn == _itemsBtn;
@@ -319,7 +381,7 @@
     self.beautyFilterView.hidden = !self.beautyFilterBtn.selected;
     self.skinBeautyView.hidden = !self.skinBeautyBtn.selected;
     self.beautyView.hidden = !self.beautyBtn.selected;
-    self.bgView.hidden = !(self.beautyView.hidden&&self.skinBeautyView.hidden);
+    self.filterSliderView.hidden = (self.filterView.hidden&&self.beautyFilterView.hidden);
     
     self.filterBtn.titleLabel.font = [UIFont systemFontOfSize:self.filterBtn.selected ? 18:17];
     self.beautyFilterBtn.titleLabel.font = [UIFont systemFontOfSize:self.beautyFilterBtn.selected ? 18:17];
@@ -356,6 +418,14 @@
 - (void)filterView:(FilterView *)filterView didSelectedFilter:(NSString *)filter
 {
     _selectedFilter = filter;
+    
+    NSArray *keys = self.filtersLevel.allKeys;
+    if (![keys containsObject:_selectedFilter]) {
+        self.filtersLevel[_selectedFilter] = @(1.0);
+    }
+    
+    self.filterSlider.value = self.filtersLevel[_selectedFilter].doubleValue;
+    
     
     if (_filterView != filterView) {
         _filterView.selectedFilter = -1;

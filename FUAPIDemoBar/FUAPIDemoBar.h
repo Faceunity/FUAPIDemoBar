@@ -59,4 +59,8 @@ FOUNDATION_EXPORT const unsigned char FUDemoBarVersionString[];
 
 @property (nonatomic, strong) NSArray<NSString *> *beautyFiltersDataSource;
 
+@property (nonatomic, assign, readonly) double selectedFilterLevel;
+
+@property (nonatomic, strong) NSDictionary<NSString *,NSString *> *filtersCHName;
+
 @end

@@ -23,6 +23,8 @@
 
 @property (nonatomic, assign) NSInteger       selectedFilter;
 
+@property (nonatomic, strong) NSDictionary<NSString *,NSString *> *filtersCHName;
+
 - (void)selectNextFilter;
 - (void)selectPreFilter;
 @end

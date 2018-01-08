@@ -17,12 +17,12 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KaL-jq-PgQ">
-                    <rect key="frame" x="0.0" y="87" width="375" height="128"/>
+                    <rect key="frame" x="0.0" y="182" width="375" height="33"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                 </view>
                 <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2VR-dM-XTi" customClass="ItemsView">
                     <rect key="frame" x="0.0" y="87" width="375" height="95"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="95" id="HHA-rf-fv2"/>
                     </constraints>
@@ -59,7 +59,7 @@
                 </collectionView>
                 <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MTX-8Z-UP1" customClass="FilterView">
                     <rect key="frame" x="0.0" y="87" width="375" height="95"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="95" id="unt-eq-me8"/>
                     </constraints>
@@ -113,7 +113,7 @@
                 </collectionView>
                 <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="aBa-lX-wYm" customClass="FilterView">
                     <rect key="frame" x="0.0" y="87" width="375" height="95"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="95" id="K3z-bo-RWY"/>
                     </constraints>
@@ -125,6 +125,29 @@
                     </collectionViewFlowLayout>
                     <cells/>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oc-v4-Qll">
+                    <rect key="frame" x="0.0" y="52" width="375" height="35"/>
+                    <subviews>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Pya-fe-tDQ" customClass="BeautySlider">
+                            <rect key="frame" x="28" y="15" width="319" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="Fla-N9-tDf"/>
+                            </constraints>
+                            <color key="minimumTrackTintColor" red="1" green="0.74509803919999995" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="beautyLevelChanged:" destination="eTU-hA-Guy" eventType="valueChanged" id="xxy-g8-24w"/>
+                                <action selector="filterLevelChanged:" destination="eTU-hA-Guy" eventType="valueChanged" id="oyT-rx-9Dm"/>
+                            </connections>
+                        </slider>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Pya-fe-tDQ" secondAttribute="bottom" id="2vL-Xz-aTm"/>
+                        <constraint firstAttribute="trailing" secondItem="Pya-fe-tDQ" secondAttribute="trailing" constant="30" id="5h1-CH-DAZ"/>
+                        <constraint firstItem="Pya-fe-tDQ" firstAttribute="leading" secondItem="1oc-v4-Qll" secondAttribute="leading" constant="30" id="6Ip-ej-tws"/>
+                        <constraint firstAttribute="height" constant="35" id="nmI-et-FlI"/>
+                    </constraints>
+                </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ol-MR-dQy">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
                     <subviews>
@@ -243,7 +266,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="ylr-6u-1aD" firstAttribute="width" secondItem="8fN-Tr-d8Y" secondAttribute="width" id="0Gx-6q-EkO"/>
                         <constraint firstItem="ylr-6u-1aD" firstAttribute="height" secondItem="8fN-Tr-d8Y" secondAttribute="height" id="24a-nT-Tgq"/>
@@ -337,7 +360,7 @@
                                 <outlet property="delegate" destination="eTU-hA-Guy" id="ssB-s2-Tt9"/>
                             </connections>
                         </collectionView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全局磨皮" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnB-xw-lLX">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精准美肤" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnB-xw-lLX">
                             <rect key="frame" x="16" y="66.5" width="62" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -350,7 +373,7 @@
                             </connections>
                         </switch>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="s0p-A8-0ic" secondAttribute="trailing" constant="16" id="4qA-L1-2ZO"/>
                         <constraint firstAttribute="trailing" secondItem="oXS-KQ-f8Q" secondAttribute="trailing" constant="16" id="8qA-Sd-hrs"/>
@@ -525,7 +548,11 @@
             <constraints>
                 <constraint firstItem="MTX-8Z-UP1" firstAttribute="leading" secondItem="eTU-hA-Guy" secondAttribute="leading" id="2As-h1-zJa"/>
                 <constraint firstItem="MTX-8Z-UP1" firstAttribute="bottom" secondItem="aBa-lX-wYm" secondAttribute="bottom" id="8ds-Ji-H4y"/>
+                <constraint firstItem="ehc-2X-0fe" firstAttribute="top" secondItem="KaL-jq-PgQ" secondAttribute="top" id="959-N5-n4e"/>
+                <constraint firstItem="MTX-8Z-UP1" firstAttribute="top" secondItem="1oc-v4-Qll" secondAttribute="bottom" id="9Rc-Pe-FHJ"/>
                 <constraint firstItem="RDA-4l-XaZ" firstAttribute="bottom" secondItem="8ol-MR-dQy" secondAttribute="bottom" id="IDI-ow-6lJ"/>
+                <constraint firstItem="1oc-v4-Qll" firstAttribute="leading" secondItem="eTU-hA-Guy" secondAttribute="leading" id="JrR-Vd-Djs"/>
+                <constraint firstAttribute="trailing" secondItem="1oc-v4-Qll" secondAttribute="trailing" id="K58-KX-KIx"/>
                 <constraint firstItem="MTX-8Z-UP1" firstAttribute="trailing" secondItem="aBa-lX-wYm" secondAttribute="trailing" id="Ock-H9-5so"/>
                 <constraint firstItem="MTX-8Z-UP1" firstAttribute="leading" secondItem="aBa-lX-wYm" secondAttribute="leading" id="RA8-z9-wAI"/>
                 <constraint firstItem="RDA-4l-XaZ" firstAttribute="leading" secondItem="8ol-MR-dQy" secondAttribute="leading" id="TPW-3a-otn"/>
@@ -535,7 +562,6 @@
                 <constraint firstAttribute="bottom" secondItem="ehc-2X-0fe" secondAttribute="bottom" id="cKR-VY-sVg"/>
                 <constraint firstAttribute="trailing" secondItem="8ol-MR-dQy" secondAttribute="trailing" id="jPV-fj-Q0x"/>
                 <constraint firstAttribute="trailing" secondItem="MTX-8Z-UP1" secondAttribute="trailing" id="jTN-gh-fXs"/>
-                <constraint firstItem="KaL-jq-PgQ" firstAttribute="top" secondItem="2VR-dM-XTi" secondAttribute="top" id="jnc-jh-zCi"/>
                 <constraint firstAttribute="trailing" secondItem="2VR-dM-XTi" secondAttribute="trailing" id="k1G-kg-TjW"/>
                 <constraint firstItem="ehc-2X-0fe" firstAttribute="top" secondItem="2VR-dM-XTi" secondAttribute="bottom" id="oGp-Jp-EzD"/>
                 <constraint firstItem="KaL-jq-PgQ" firstAttribute="leading" secondItem="eTU-hA-Guy" secondAttribute="leading" id="pLG-Xt-D0p"/>
@@ -552,11 +578,12 @@
                 <outlet property="beautyFilterBtn" destination="lzH-Nm-KPV" id="MTz-88-jlx"/>
                 <outlet property="beautyFilterView" destination="aBa-lX-wYm" id="EpL-Gu-a0l"/>
                 <outlet property="beautyView" destination="8ol-MR-dQy" id="RdX-TN-Zz0"/>
-                <outlet property="bgView" destination="KaL-jq-PgQ" id="VzI-kR-ijB"/>
                 <outlet property="blurView" destination="L1A-0S-OUb" id="B8h-3P-8tf"/>
                 <outlet property="dayanSlider" destination="s8u-JT-UBZ" id="t6g-WF-BYB"/>
                 <outlet property="defaultBtn" destination="8fN-Tr-d8Y" id="G2Y-zi-29G"/>
                 <outlet property="filterBtn" destination="Lwt-qq-DWA" id="zPM-PH-ZIN"/>
+                <outlet property="filterSlider" destination="Pya-fe-tDQ" id="l6a-hS-SmW"/>
+                <outlet property="filterSliderView" destination="1oc-v4-Qll" id="e6i-gL-Ku8"/>
                 <outlet property="filterView" destination="MTX-8Z-UP1" id="nO8-Qo-eKg"/>
                 <outlet property="gradeSlider" destination="BNH-yA-T74" id="ZHK-LN-Hrl"/>
                 <outlet property="itemsBtn" destination="BFq-PL-5nf" id="g9K-RM-dBu"/>
@@ -571,7 +598,7 @@
                 <outlet property="whiteSlider" destination="oXS-KQ-f8Q" id="qG3-Rt-lSZ"/>
                 <outlet property="ziranBtn" destination="ZRP-Uz-yJq" id="W2J-pL-lEr"/>
             </connections>
-            <point key="canvasLocation" x="20.5" y="20"/>
+            <point key="canvasLocation" x="20.5" y="19.5"/>
         </view>
     </objects>
     <resources>
