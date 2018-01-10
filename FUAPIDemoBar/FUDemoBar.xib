@@ -12,13 +12,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="eTU-hA-Guy" customClass="FUDemoBar">
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="eTU-hA-Guy" customClass="FUDemoBar">
             <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KaL-jq-PgQ">
-                    <rect key="frame" x="0.0" y="182" width="375" height="33"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-xi-Jal">
+                    <rect key="frame" x="0.0" y="215" width="375" height="34"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.84999999999999998" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="m9a-kj-svr"/>
+                    </constraints>
                 </view>
                 <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2VR-dM-XTi" customClass="ItemsView">
                     <rect key="frame" x="0.0" y="87" width="375" height="95"/>
@@ -509,7 +512,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.70159995720000001" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.84999999999999998" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="BFq-PL-5nf" firstAttribute="leading" secondItem="ehc-2X-0fe" secondAttribute="leading" id="2NB-G0-fKT"/>
                         <constraint firstAttribute="height" constant="33" id="2l9-43-qlg"/>
@@ -548,8 +551,9 @@
             <constraints>
                 <constraint firstItem="MTX-8Z-UP1" firstAttribute="leading" secondItem="eTU-hA-Guy" secondAttribute="leading" id="2As-h1-zJa"/>
                 <constraint firstItem="MTX-8Z-UP1" firstAttribute="bottom" secondItem="aBa-lX-wYm" secondAttribute="bottom" id="8ds-Ji-H4y"/>
-                <constraint firstItem="ehc-2X-0fe" firstAttribute="top" secondItem="KaL-jq-PgQ" secondAttribute="top" id="959-N5-n4e"/>
                 <constraint firstItem="MTX-8Z-UP1" firstAttribute="top" secondItem="1oc-v4-Qll" secondAttribute="bottom" id="9Rc-Pe-FHJ"/>
+                <constraint firstItem="Yqg-xi-Jal" firstAttribute="top" secondItem="ehc-2X-0fe" secondAttribute="bottom" id="9jG-Nl-vZm"/>
+                <constraint firstItem="Yqg-xi-Jal" firstAttribute="leading" secondItem="eTU-hA-Guy" secondAttribute="leading" id="HPl-MW-u7p"/>
                 <constraint firstItem="RDA-4l-XaZ" firstAttribute="bottom" secondItem="8ol-MR-dQy" secondAttribute="bottom" id="IDI-ow-6lJ"/>
                 <constraint firstItem="1oc-v4-Qll" firstAttribute="leading" secondItem="eTU-hA-Guy" secondAttribute="leading" id="JrR-Vd-Djs"/>
                 <constraint firstAttribute="trailing" secondItem="1oc-v4-Qll" secondAttribute="trailing" id="K58-KX-KIx"/>
@@ -559,18 +563,16 @@
                 <constraint firstItem="ehc-2X-0fe" firstAttribute="leading" secondItem="eTU-hA-Guy" secondAttribute="leading" id="TxB-sp-Tx3"/>
                 <constraint firstAttribute="trailing" secondItem="ehc-2X-0fe" secondAttribute="trailing" id="VXz-D2-mK6"/>
                 <constraint firstItem="2VR-dM-XTi" firstAttribute="leading" secondItem="eTU-hA-Guy" secondAttribute="leading" id="Wj1-cJ-bcc"/>
+                <constraint firstAttribute="trailing" secondItem="Yqg-xi-Jal" secondAttribute="trailing" id="bZv-vh-Vsw"/>
                 <constraint firstAttribute="bottom" secondItem="ehc-2X-0fe" secondAttribute="bottom" id="cKR-VY-sVg"/>
                 <constraint firstAttribute="trailing" secondItem="8ol-MR-dQy" secondAttribute="trailing" id="jPV-fj-Q0x"/>
                 <constraint firstAttribute="trailing" secondItem="MTX-8Z-UP1" secondAttribute="trailing" id="jTN-gh-fXs"/>
                 <constraint firstAttribute="trailing" secondItem="2VR-dM-XTi" secondAttribute="trailing" id="k1G-kg-TjW"/>
                 <constraint firstItem="ehc-2X-0fe" firstAttribute="top" secondItem="2VR-dM-XTi" secondAttribute="bottom" id="oGp-Jp-EzD"/>
-                <constraint firstItem="KaL-jq-PgQ" firstAttribute="leading" secondItem="eTU-hA-Guy" secondAttribute="leading" id="pLG-Xt-D0p"/>
                 <constraint firstItem="8ol-MR-dQy" firstAttribute="leading" secondItem="eTU-hA-Guy" secondAttribute="leading" id="q0D-qP-8NE"/>
                 <constraint firstItem="ehc-2X-0fe" firstAttribute="top" secondItem="8ol-MR-dQy" secondAttribute="bottom" id="q8N-Fm-CqT"/>
-                <constraint firstAttribute="trailing" secondItem="KaL-jq-PgQ" secondAttribute="trailing" id="so2-cm-has"/>
                 <constraint firstItem="ehc-2X-0fe" firstAttribute="top" secondItem="MTX-8Z-UP1" secondAttribute="bottom" id="wTj-VV-UPr"/>
                 <constraint firstItem="RDA-4l-XaZ" firstAttribute="trailing" secondItem="8ol-MR-dQy" secondAttribute="trailing" id="x6o-AQ-Nsr"/>
-                <constraint firstAttribute="bottom" secondItem="KaL-jq-PgQ" secondAttribute="bottom" id="y0f-4R-HZQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -598,7 +600,7 @@
                 <outlet property="whiteSlider" destination="oXS-KQ-f8Q" id="qG3-Rt-lSZ"/>
                 <outlet property="ziranBtn" destination="ZRP-Uz-yJq" id="W2J-pL-lEr"/>
             </connections>
-            <point key="canvasLocation" x="20.5" y="19.5"/>
+            <point key="canvasLocation" x="19" y="-32"/>
         </view>
     </objects>
     <resources>

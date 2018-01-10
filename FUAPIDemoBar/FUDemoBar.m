@@ -389,7 +389,7 @@
     self.itemsBtn.titleLabel.font = [UIFont systemFontOfSize:self.itemsBtn.selected ? 18:17];
     self.beautyBtn.titleLabel.font = [UIFont systemFontOfSize:self.beautyBtn.selected ? 18:17];
     
-    self.backgroundColor = (self.beautyView.hidden&&self.skinBeautyView.hidden) ? [UIColor clearColor] : [UIColor colorWithWhite:0 alpha:0.5];
+//    self.backgroundColor = (self.beautyView.hidden&&self.skinBeautyView.hidden) ? [UIColor clearColor] : [UIColor colorWithWhite:0 alpha:0.5];
 //    self.backgroundColor = [UIColor redColor];
     
     
