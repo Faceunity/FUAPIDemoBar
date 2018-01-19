@@ -13,7 +13,7 @@
 {
     FUDemoBar *bar;
 }
-
+@property (nonatomic, assign, readwrite) double selectedFilterLevel;
 @end
 
 @implementation FUAPIDemoBar
@@ -54,6 +54,9 @@
     bar.faceShapeLevel = _faceShapeLevel;
     bar.faceShape = _faceShape;
     bar.filtersCHName = _filtersCHName;
+    
+    [bar setFilterLevel:_selectedFilterLevel forFilter:_selectedFilter];
+    
     [self addSubview:bar];
 }
 
@@ -80,6 +83,9 @@
         bar.faceShapeLevel = _faceShapeLevel;
         bar.faceShape = _faceShape;
         bar.filtersCHName = _filtersCHName;
+        
+        [bar setFilterLevel:_selectedFilterLevel forFilter:_selectedFilter];
+        
         [self addSubview:bar];
     }
     
@@ -258,6 +264,11 @@
 
 - (double)selectedFilterLevel{
     return bar.selectedFilterLevel;
+}
+
+- (void)setFilterLevel:(double)level forFilter:(NSString *)filter{
+    _selectedFilterLevel = level;
+    [bar setFilterLevel:level forFilter:filter];
 }
 
 #pragma -FUDemoBarDelegate

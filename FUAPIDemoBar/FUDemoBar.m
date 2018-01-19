@@ -91,7 +91,7 @@
     _wanghongBtn.layer.cornerRadius  = 15.0;
     _ziranBtn.layer.cornerRadius = 15.0;
     
-    [self bottomBtnClick:self.itemsBtn];
+    [self bottomBtnClick:self.beautyFilterBtn];
 }
 
 - (void)setWhiteLevel:(double)whiteLevel
@@ -276,6 +276,21 @@
     _skinDetectEnable = skinDetectEnable;
     
     [self.skinDetectSwitch setOn:skinDetectEnable animated:YES];
+}
+
+- (void)setFilterLevel:(double)level forFilter:(NSString *)filter{
+    self.filtersLevel[filter] = @(level);
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.filterSlider.value = self.filtersLevel[_selectedFilter].doubleValue;
+        [self.filterView reloadData];
+        [self.beautyFilterView reloadData];
+    });
+    
+    if ([self.delegate respondsToSelector:@selector(demoBarBeautyParamChanged)]) {
+        [self.delegate demoBarBeautyParamChanged];
+    }
 }
 
 - (IBAction)skinDetectSwitchValueChanged:(UISwitch *)sender {

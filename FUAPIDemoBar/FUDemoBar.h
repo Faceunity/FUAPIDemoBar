@@ -56,4 +56,5 @@
 
 @property (nonatomic, strong) NSDictionary<NSString *,NSString *> *filtersCHName;
 
+- (void)setFilterLevel:(double)level forFilter:(NSString *)filter;
 @end
