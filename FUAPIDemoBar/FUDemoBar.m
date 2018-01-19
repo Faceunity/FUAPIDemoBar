@@ -91,7 +91,7 @@
     _wanghongBtn.layer.cornerRadius  = 15.0;
     _ziranBtn.layer.cornerRadius = 15.0;
     
-    [self bottomBtnClick:self.beautyFilterBtn];
+    [self bottomBtnClick:self.skinBeautyBtn];
 }
 
 - (void)setWhiteLevel:(double)whiteLevel
@@ -185,7 +185,7 @@
 {
     _filtersDataSource = filtersDataSource;
     
-    self.filterView.filtersDataSource = filtersDataSource.count > 0 ? self.filtersDataSource:@[@"nature", @"delta", @"electric", @"slowlived", @"tokyo", @"warm"];
+    self.filterView.filtersDataSource = filtersDataSource.count > 0 ? self.filtersDataSource:@[@"origin", @"delta", @"electric", @"slowlived", @"tokyo", @"warm"];
     if ([self.filterView.filtersDataSource containsObject:_selectedFilter]) {
         self.filterView.selectedFilter = [self.filterView.filtersDataSource indexOfObject:_selectedFilter];
     }else{
@@ -201,7 +201,7 @@
 
 - (void)setBeautyFiltersDataSource:(NSArray<NSString *> *)beautyFiltersDataSource{
     _beautyFiltersDataSource = beautyFiltersDataSource;
-    self.beautyFilterView.filtersDataSource = beautyFiltersDataSource.count >0 ? beautyFiltersDataSource:@[@"origin", @"qingxin", @"shaonv", @"ziran", @"hongrun"];
+    self.beautyFilterView.filtersDataSource = beautyFiltersDataSource.count >0 ? beautyFiltersDataSource:@[@"origin", @"qingxin", @"fennen", @"ziran", @"hongrun"];
     if ([self.beautyFilterView.filtersDataSource containsObject:_selectedFilter]) {
         self.beautyFilterView.selectedFilter = [self.beautyFilterView.filtersDataSource indexOfObject:_selectedFilter];
     }else{
