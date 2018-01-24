@@ -173,6 +173,10 @@
         self.beautyFilterView.selectedFilter = -1;
     }
     
+    if (!_selectedFilter) {
+        return;
+    }
+    
     NSArray *keys = self.filtersLevel.allKeys;
     if (![keys containsObject:_selectedFilter]) {
         self.filtersLevel[_selectedFilter] = @(1.0);
@@ -279,6 +283,9 @@
 }
 
 - (void)setFilterLevel:(double)level forFilter:(NSString *)filter{
+    if (!filter) {
+        return;
+    }
     self.filtersLevel[filter] = @(level);
     
     
