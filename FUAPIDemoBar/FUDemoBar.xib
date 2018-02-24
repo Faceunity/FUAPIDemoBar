@@ -404,7 +404,7 @@
                     <rect key="frame" x="0.0" y="182" width="375" height="33"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FcL-g3-bCz">
-                            <rect key="frame" x="0.0" y="0.0" width="86.5" height="33"/>
+                            <rect key="frame" x="69" y="0.0" width="69" height="33"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -422,7 +422,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFq-PL-5nf">
-                            <rect key="frame" x="-86" y="0.0" width="86" height="33"/>
+                            <rect key="frame" x="0.0" y="0.0" width="69" height="33"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -440,7 +440,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzH-Nm-KPV">
-                            <rect key="frame" x="172.5" y="0.0" width="116.5" height="33"/>
+                            <rect key="frame" x="207" y="0.0" width="99" height="33"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -458,7 +458,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuX-ff-Rml">
-                            <rect key="frame" x="86.5" y="0.0" width="86" height="33"/>
+                            <rect key="frame" x="138" y="0.0" width="69" height="33"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -476,7 +476,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lwt-qq-DWA">
-                            <rect key="frame" x="289" y="0.0" width="86" height="33"/>
+                            <rect key="frame" x="306" y="0.0" width="69" height="33"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -519,7 +519,7 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="lHJ-kw-Asf"/>
+                            <exclude reference="PyX-Hm-AZd"/>
                         </mask>
                     </variation>
                 </view>
