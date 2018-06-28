@@ -1,113 +1,118 @@
 //
 //  FilterView.m
+//  FULiveDemoBar
 //
-//  Created by liuyang on 16/10/20.
-//  Copyright © 2016年 liuyang. All rights reserved.
+//  Created by L on 2018/3/24.
+//  Copyright © 2018年 L. All rights reserved.
 //
 
 #import "FilterView.h"
 #import "UIImage+demobar.h"
 
-@interface filterCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UILabel *filterNameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@end
 
-@implementation filterCell
+@interface FilterView()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @end
 
 @implementation FilterView
 
--(void)awakeFromNib
-{
+
+-(void)awakeFromNib {
     [super awakeFromNib];
-    self.delegate = self;
+    
+    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+    self.delegate = self ;
     self.dataSource = self;
-    
-    [self registerNib:[UINib nibWithNibName:@"filterCell" bundle:[NSBundle bundleForClass:[self class]]] forCellWithReuseIdentifier:@"filterCell"];
+    [self registerClass:[FilterViewCell class] forCellWithReuseIdentifier:@"FilterViewCell"];
 }
 
-- (void)setSelectedFilter:(NSInteger)selectedFilter{
-    _selectedFilter = selectedFilter;
-    
+-(void)setFilterDataSource:(NSArray<NSString *> *)filterDataSource {
+    _filterDataSource = filterDataSource ;
     [self reloadData];
 }
 
-- (void)setFiltersDataSource:(NSArray<NSString *> *)filtersDataSource
-{
-    _filtersDataSource = filtersDataSource;
-    
+-(void)setSelectedFilterIndex:(NSInteger)selectedFilterIndex {
+    _selectedFilterIndex = selectedFilterIndex ;
     [self reloadData];
 }
 
-- (void)setFiltersCHName:(NSDictionary<NSString *,NSString *> *)filtersCHName{
-    _filtersCHName = filtersCHName;
-    
+-(void)setFiltersCHName:(NSDictionary<NSString *,NSString *> *)filtersCHName {
+    _filtersCHName = filtersCHName ;
     [self reloadData];
 }
 
--(NSInteger)numberOfSections{
-    return 1;
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.filterDataSource.count ;
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return _filtersDataSource.count;
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    filterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"filterCell" forIndexPath:indexPath];
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    cell.imageView.image = [UIImage imageWithName:_filtersDataSource[indexPath.row]];
-    NSString *filter = _filtersDataSource[indexPath.row];
-    cell.filterNameLabel.text = _filtersCHName[filter] ? _filtersCHName[filter]:filter;
+    FilterViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FilterViewCell" forIndexPath:indexPath];
     
+    NSString *imageName = self.filterDataSource[indexPath.row] ;
+    
+    cell.imageView.image = [UIImage imageWithName:imageName];
+    
+    NSString *filter = self.filterDataSource[indexPath.row];
+    cell.titleLabel.text = _filtersCHName[filter] ? _filtersCHName[filter]:filter;
+    cell.titleLabel.textColor = [UIColor whiteColor];
+    
+    cell.imageView.layer.borderWidth = 0.0 ;
     cell.imageView.layer.borderColor = [UIColor clearColor].CGColor;
-    cell.imageView.layer.borderWidth = 0.0;
     
-    if (_selectedFilter == indexPath.row) {
-        cell.imageView.layer.borderColor = [UIColor colorWithRed:255 / 255.0 green:190 / 255.0 blue:29 / 255.0 alpha:1.0].CGColor;
-        cell.imageView.layer.borderWidth = 1.8;
+    if (self.selectedFilterIndex == indexPath.row) {
+        cell.imageView.layer.borderWidth = 2.0 ;
+        cell.imageView.layer.borderColor = [UIColor colorWithRed:91 / 255.0 green:181 / 255.0 blue:249 / 255.0 alpha:1.0].CGColor;
+        cell.titleLabel.textColor = [UIColor colorWithRed:91 / 255.0 green:181 / 255.0 blue:249 / 255.0 alpha:1.0];
     }
     
-    return cell;
+    return cell ;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row == _selectedFilter ) {
-        return;
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == self.selectedFilterIndex) {
+        return ;
     }
     
-    _selectedFilter = indexPath.row;
-    
+    if (_selectedFilterIndex != -1) {
+        if (self.mDelegate && [self.mDelegate respondsToSelector:@selector(filterView:didHiddeFilter:)]) {
+            [self.mDelegate filterView:self didHiddeFilter:self.filterDataSource[_selectedFilterIndex]];
+        }
+    }
+    _selectedFilterIndex = indexPath.row ;
     [collectionView reloadData];
     
-    if ([self.mdelegate respondsToSelector:@selector(filterView:didSelectedFilter:)]) {
-        [self.mdelegate filterView:self didSelectedFilter:_filtersDataSource[indexPath.row]];
-    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.18 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.mDelegate && [self.mDelegate respondsToSelector:@selector(filterView:didSelectedFilter:)]) {
+            [self.mDelegate filterView:self didSelectedFilter:self.filterDataSource[indexPath.row]];
+        }
+    });
 }
 
-- (void)selectNextFilter
-{
-    NSInteger item = _selectedFilter + 1;
-    if (item >= _filtersDataSource.count) {
-        item = _filtersDataSource.count - 1;
-    }
-    [self selectItemAtIndexPath:[NSIndexPath indexPathForRow:item inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionLeft];
-    [self collectionView:self didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:item inSection:0]];
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(60, 74) ;
 }
 
-- (void)selectPreFilter
-{
-    NSInteger item = _selectedFilter - 1;
-    if (item < 0) {
-        item = 0;
-    }
-    [self selectItemAtIndexPath:[NSIndexPath indexPathForRow:item inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionRight];
-    [self collectionView:self didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:item inSection:0]];
-}
+@end
 
+
+@implementation FilterViewCell
+
+-(instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake((frame.size.width - 60)/ 2.0, 0, 60, 60)];
+        [self addSubview:self.imageView ];
+        
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, frame.size.width, frame.size.height - 60)];
+        self.titleLabel.textAlignment = NSTextAlignmentCenter ;
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.titleLabel.font = [UIFont systemFontOfSize:12];
+        [self addSubview:self.titleLabel];
+    }
+    return self ;
+}
 @end

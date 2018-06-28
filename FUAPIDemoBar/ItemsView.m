@@ -1,28 +1,17 @@
 //
-//  ItemsView.m
+//  FUItemsView.m
+//  FUAPIDemoBar
 //
-//  Created by 刘洋 on 2017/1/6.
-//  Copyright © 2017年 Agora. All rights reserved.
+//  Created by L on 2018/4/12.
+//  Copyright © 2018年 L. All rights reserved.
 //
 
 #import "ItemsView.h"
 #import "UIImage+demobar.h"
 
-@interface FUItemCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-
-@property (nonatomic, weak) IBOutlet UIImageView *imageView;
-
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
-@end
-
-@implementation FUItemCell
-
-@end
-
-
-@interface ItemsView ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface ItemsView ()<UICollectionViewDelegate, UICollectionViewDataSource>
 {
+    NSInteger selectIndex ;
     BOOL bLoading;
 }
 
@@ -30,93 +19,116 @@
 
 @implementation ItemsView
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    self.delegate = self;
-    
-    self.dataSource = self;
-    
-    [self registerNib:[UINib nibWithNibName:@"FUItemCell" bundle:[NSBundle bundleForClass:[self class]]] forCellWithReuseIdentifier:@"itemCell"];
+-(instancetype)init {
+    self = [super init];
+    if (self) {
+        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.65];
+        selectIndex = -1 ;
+        bLoading = NO ;
+    }
+    return self ;
 }
 
-- (void)setItemsDataSource:(NSArray<NSString *> *)itemsDataSource
-{
-    _itemsDataSource = itemsDataSource;
+-(void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.65];
+    self.delegate = self ;
+    self.dataSource = self ;
+    
+    selectIndex = -1 ;
+    bLoading = NO ;
+    [self registerClass:[FUItemsCell class] forCellWithReuseIdentifier:@"FUItemsCell"];
+}
+
+-(void)setItemsArray:(NSArray *)itemsArray {
+    _itemsArray = itemsArray ;
+    [self reloadData];
+}
+
+-(void)setSelectedItem:(NSString *)selectedItem {
+    _selectedItem = selectedItem ;
+    
+    selectIndex = [_itemsArray indexOfObject:selectedItem];
     
     [self reloadData];
 }
 
-- (NSInteger)numberOfSections
-{
-    return 1;
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.itemsArray.count ;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return _itemsDataSource.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    FUItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"itemCell" forIndexPath:indexPath];
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    cell.imageView.image = [UIImage imageWithName:_itemsDataSource[indexPath.row]];
+    FUItemsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FUItemsCell" forIndexPath:indexPath];
     
-    cell.nameLabel.text = cell.imageView.image ? @"":_itemsDataSource[indexPath.row];
+    cell.imageView.layer.borderWidth = 0.0 ;
+    cell.imageView.layer.borderColor = [UIColor clearColor].CGColor;
+    cell.imageView.image = [UIImage imageWithName:self.itemsArray[indexPath.row]];
     
-    cell.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
-
-    cell.layer.cornerRadius = cell.frame.size.width * 0.5;
-    
-    cell.layer.masksToBounds = YES;
-    
-    cell.layer.borderWidth = 0.0;
-    
-    cell.layer.borderColor = [UIColor colorWithRed:255 / 255.0 green:190 / 255.0 blue:29 / 255.0 alpha:1.0].CGColor;
-    
-    if (indexPath.row == _selectedItem)
-    {
-        cell.layer.borderWidth = 1.0;
+    if (indexPath.row == selectIndex) {
+        cell.imageView.layer.borderWidth = 2.0 ;
+        cell.imageView.layer.borderColor = [UIColor whiteColor].CGColor;
         if (bLoading) {
-            [cell.activityIndicatorView startAnimating];
+            [cell.indicator startAnimating];
         }
     }
-    
-    return cell;
+    return cell ;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (_selectedItem != indexPath.row) {
-        
-        bLoading = YES;
-        self.userInteractionEnabled = NO;
-        
-        _selectedItem = indexPath.row;
-        [collectionView reloadData];
-        
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            
-            if ([self.mdelegate respondsToSelector:@selector(didSelectedItem:)]) {
-                [self.mdelegate didSelectedItem:self.itemsDataSource[indexPath.row]];
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                bLoading = NO;
-                self.userInteractionEnabled = YES;
-                
-                FUItemCell *cell = (FUItemCell *)[collectionView cellForItemAtIndexPath:indexPath];
-                
-                [cell.activityIndicatorView stopAnimating];
-                
-            });
-        });
+    if (indexPath.row == selectIndex) {
+        return ;
     }
+    bLoading = YES;
+    self.userInteractionEnabled = NO;
+    selectIndex = indexPath.row;
+    [collectionView reloadData];
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        if ([self.mDelegate respondsToSelector:@selector(itemsViewDidSelectItem:)]) {
+            [self.mDelegate itemsViewDidSelectItem:self.itemsArray[indexPath.row]];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            bLoading = NO;
+            self.userInteractionEnabled = YES;
+            FUItemsCell *cell = (FUItemsCell *)[collectionView cellForItemAtIndexPath:indexPath];
+            [cell.indicator stopAnimating];
+        });
+    });
 }
+
 
 @end
 
+
+
+
+@implementation FUItemsCell
+
+-(instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        self.imageView.layer.masksToBounds = YES ;
+        self.imageView.layer.cornerRadius = frame.size.width / 2.0 ;
+        self.imageView.layer.borderColor = [UIColor clearColor].CGColor;
+        self.imageView.layer.borderWidth = 0.0 ;
+        [self addSubview:self.imageView ];
+        
+        self.indicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.bounds.size.width - 37)/ 2.0, (self.bounds.size.width - 37)/ 2.0, 37, 37)];
+        self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite ;
+        self.indicator.hidesWhenStopped = YES ;
+        [self.indicator stopAnimating ];
+        [self addSubview:self.indicator ];
+    }
+    return self ;
+}
+
+@end

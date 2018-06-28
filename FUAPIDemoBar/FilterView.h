@@ -1,30 +1,39 @@
 //
 //  FilterView.h
+//  FULiveDemoBar
 //
-//  Created by liuyang on 16/10/20.
-//  Copyright © 2016年 liuyang. All rights reserved.
+//  Created by L on 2018/3/24.
+//  Copyright © 2018年 L. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class FilterView;
+@class FilterView , FilterViewCell;
 
 @protocol FilterViewDelegate <NSObject>
 
+@optional
 - (void)filterView:(FilterView *)filterView didSelectedFilter:(NSString *)filter;
+
+- (void)filterView:(FilterView *)filterView didHiddeFilter:(NSString *)filter;
 
 @end
 
-@interface FilterView : UICollectionView<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface FilterView : UICollectionView
 
-@property (nonatomic, strong) NSArray<NSString *> *filtersDataSource;
+@property (nonatomic, strong) NSArray <NSString *>*filterDataSource ;
 
-@property (nonatomic, assign) id<FilterViewDelegate> mdelegate;
+@property (nonatomic, assign) id<FilterViewDelegate>mDelegate ;
 
-@property (nonatomic, assign) NSInteger       selectedFilter;
+@property (nonatomic, assign) NSInteger selectedFilterIndex ;
 
 @property (nonatomic, strong) NSDictionary<NSString *,NSString *> *filtersCHName;
 
-- (void)selectNextFilter;
-- (void)selectPreFilter;
+@end
+
+
+@interface FilterViewCell : UICollectionViewCell
+
+@property (nonatomic, strong) UIImageView *imageView ;
+@property (nonatomic, strong) UILabel *titleLabel ;
 @end
